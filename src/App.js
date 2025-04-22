@@ -2,15 +2,16 @@ import './App.css';
 import {Routes, Route} from 'react-router-dom';
 
 import Layout from './components/Layout/Layout';
-import BasicCalculator from './components/Layout/BasicCalculator';
+import BasicCalculator from './components/BasicCalculator';
+import InputCalculator from './components/InputCalculator';
 
 function App() {
   const HeaderTitle = "React Calculator";
   const FooterMessage =" © 2023 React Calculator";
   const menu_list = [
     {menu_id: 1, title: "Home", url : "/"},
-    {menu_id: 2, title: "Basic Calculator", url : "/calculator", element: <BasicCalculator />},
-    {menu_id: 3, title: "Input Calculator", url : "/inputcalculator"},
+    {menu_id: 2, title: "Basic Calculator", url : "/basiccalculator", element: <BasicCalculator />},
+    {menu_id: 3, title: "Input Calculator", url : "/inputcalculator", element: <InputCalculator />},
     {menu_id: 4, title: "Body Calculator", url : "/bodycalculator"}
   ];
   return (
