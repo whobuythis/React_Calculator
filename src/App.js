@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import {Routes, Route} from 'react-router-dom';
+
+import Layout from './components/Layout/Layout';
+import BasicCalculator from './components/Layout/BasicCalculator';
 
 function App() {
+  const HeaderTitle = "React Calculator";
+  const FooterMessage =" © 2023 React Calculator";
+  const menu_list = [
+    {menu_id: 1, title: "Home", url : "/"},
+    {menu_id: 2, title: "Basic Calculator", url : "/calculator", element: <BasicCalculator />},
+    {menu_id: 3, title: "Input Calculator", url : "/inputcalculator"},
+    {menu_id: 4, title: "Body Calculator", url : "/bodycalculator"}
+  ];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<Layout title={HeaderTitle} footermessage={FooterMessage} menu_list={menu_list} />}>
+          {menu_list.map((menu) => (
+            <Route key={menu.menu_id} path={menu.url} element={menu.element} />
+          ))}
+        </Route>
+      </Routes>
     </div>
   );
 }
